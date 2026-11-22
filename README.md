@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kingdom Platinum Solutions — Storefront Preview
 
-## Getting Started
+A premium digital-product storefront preview for Kingdom Platinum Solutions, LLC, focused on the **Grace Through Grief** collection.
 
-First, run the development server:
+Prospective-client design preview by **The Nexus Dynamics**.
+
+- Full project scope, verified catalog, and content rules: [PROJECT_BRIEF.md](./PROJECT_BRIEF.md)
+- No backend, authentication, payments, or admin dashboard
+- Built with Next.js App Router, TypeScript, and Tailwind CSS
+
+## Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open <http://localhost:3000>.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm run lint
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Content
 
-## Learn More
+Product titles, prices, imagery references, and the bundle description live in `src/content/`. Only verified public information is included; products without a public description intentionally have none.
 
-To learn more about Next.js, take a look at the following resources:
+**Purpose & Profit** is not published — its products and details are unverified.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Preview deployment (Vercel)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This is a client design preview, not the official store. Every route is marked `noindex, nofollow` in page metadata and in the `X-Robots-Tag` response header. That discourages search indexing; it is **not** access protection — anyone with the URL can open the preview.
 
-## Deploy on Vercel
+The app uses the Next.js App Router with Cache Components and Partial Prefetching. Deploy it as a normal Next.js project; do not use `next export` or a static output directory.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. The site is committed on `main` and published at <https://github.com/DaniyalQais/Kingdom-Platinum>.
+2. In Vercel, choose **Add New → Project** and import that repository. Use the repository root.
+3. Keep the detected **Next.js** framework preset and these settings:
+   - Install Command: `npm install` (or `npm ci`; the lockfile is committed)
+   - Build Command: `npm run build`
+   - Output Directory: default (`.next`)
+   - Node.js: 22.x
+4. No environment variables are required.
+5. Deploy and use the generated `*.vercel.app` URL.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Do not connect `kingdomplatinumsolutionsllc.com` to this project.

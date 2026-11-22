@@ -1,26 +1,295 @@
 @import "tailwindcss";
 
+@theme {
+  --color-ivory: #fcfaf7;
+  --color-ivory-deep: #f6f1ea;
+  --color-blush: #f4e0e7;
+  --color-lavender: #eae1f0;
+  --color-plum: #382239;
+  --color-plum-deep: #2a172f;
+  --color-plum-soft: #655a65;
+  --color-line: #ddd4de;
+
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-manrope);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+
+  /* Shared motion system */
+  --motion-hover: 180ms;
+  --motion-overlay: 200ms;
+  --motion-enter: 480ms;
+  --motion-stagger: 70ms;
+  --motion-rise: 14px;
+  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-ivory);
+  color: var(--color-plum);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.65;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2 {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+
+::selection {
+  background: var(--color-lavender);
+  color: var(--color-plum);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-plum);
+  outline-offset: 3px;
+}
+
+.dark-surface :focus-visible {
+  outline-color: var(--color-ivory);
+}
+
+/* Sticky header: shadow only, no size change */
+.site-header {
+  transition: box-shadow var(--motion-hover) var(--motion-ease);
+}
+
+.site-header[data-scrolled="true"] {
+  box-shadow: 0 18px 40px -34px rgb(56 34 57 / 0.55);
+}
+
+/* Hero entrance: plays once on load, pure CSS */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, var(--motion-rise), 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.hero-enter {
+  animation: rise-in var(--motion-enter) var(--motion-ease) both;
+}
+
+/* Scroll reveals: no state means fully visible */
+[data-reveal="pending"] {
+  opacity: 0;
+  transform: translate3d(0, var(--motion-rise), 0);
+}
+
+[data-reveal="shown"] {
+  animation: rise-in var(--motion-enter) var(--motion-ease)
+    var(--reveal-delay, 0ms) both;
+}
+
+[data-reveal="instant"] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Primary navigation: brief underline fade without movement */
+.nav-link {
+  text-decoration-color: transparent;
+  transition:
+    color var(--motion-hover) var(--motion-ease),
+    text-decoration-color var(--motion-hover) var(--motion-ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .nav-link[data-active="false"]:hover {
+    text-decoration-color: rgb(56 34 57 / 0.2);
+  }
+}
+
+.nav-link[data-active="true"] {
+  color: var(--color-plum);
+  text-decoration-color: rgb(56 34 57 / 0.4);
+}
+
+/* Button arrows: one consistent nudge */
+.button-arrow {
+  display: inline-block;
+  transition: transform var(--motion-hover) var(--motion-ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  a:hover > .button-arrow,
+  button:hover > .button-arrow {
+    transform: translateX(3px);
+  }
+}
+
+a:focus-visible > .button-arrow,
+button:focus-visible > .button-arrow {
+  transform: translateX(3px);
+}
+
+/* Product cards: hover only where a fine pointer exists */
+.product-cover {
+  transition: transform var(--motion-hover) var(--motion-ease);
+}
+
+.product-artwork {
+  transition: box-shadow var(--motion-hover) var(--motion-ease);
+}
+
+.card-arrow {
+  display: inline-block;
+  transition: transform var(--motion-hover) var(--motion-ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .product-card:hover .product-cover {
+    transform: translateY(-4px) scale(1.02);
+  }
+
+  .product-card:hover .product-artwork {
+    box-shadow: 0 16px 30px -20px rgb(56 34 57 / 0.4);
+  }
+
+  .product-card:hover .card-arrow {
+    transform: translateX(3px);
+  }
+}
+
+.product-media:focus-visible .product-cover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+.product-media:focus-visible .product-artwork {
+  box-shadow: 0 16px 30px -20px rgb(56 34 57 / 0.4);
+}
+
+.card-details:focus-visible .card-arrow {
+  transform: translateX(3px);
+}
+
+/* Mobile menu */
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -4px, 0) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.menu-panel {
+  animation: menu-in var(--motion-overlay) var(--motion-ease);
+  transform-origin: top right;
+}
+
+/* Product dialog */
+dialog.product-dialog {
+  opacity: 0;
+  transform: scale(0.98);
+  transition:
+    opacity var(--motion-overlay) var(--motion-ease),
+    transform var(--motion-overlay) var(--motion-ease);
+}
+
+dialog.product-dialog[open] {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@starting-style {
+  dialog.product-dialog[open] {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+}
+
+dialog.product-dialog[data-closing="true"] {
+  opacity: 0;
+  transform: scale(0.98);
+  transition-duration: 180ms;
+}
+
+dialog.product-dialog::backdrop {
+  background-color: rgb(42 23 47 / 0.6);
+  opacity: 0;
+  transition: opacity var(--motion-overlay) var(--motion-ease);
+}
+
+dialog.product-dialog[open]::backdrop {
+  opacity: 1;
+}
+
+@starting-style {
+  dialog.product-dialog[open]::backdrop {
+    opacity: 0;
+  }
+}
+
+dialog.product-dialog[data-closing="true"]::backdrop {
+  opacity: 0;
+  transition-duration: 180ms;
+}
+
+/* Contact rows */
+.contact-row {
+  transition:
+    background-color var(--motion-hover) var(--motion-ease),
+    color var(--motion-hover) var(--motion-ease);
+}
+
+.contact-arrow {
+  display: inline-block;
+  transition: transform var(--motion-hover) var(--motion-ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .contact-row:hover {
+    background-color: rgb(246 241 234 / 0.8);
+  }
+
+  .contact-row:hover .contact-arrow {
+    transform: translate(2px, -2px);
+  }
+}
+
+.contact-row:focus-visible .contact-arrow {
+  transform: translate(2px, -2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+
+  dialog::backdrop {
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
 }
