@@ -125,6 +125,18 @@ export function ProductDialogProvider({ children }: { children: ReactNode }) {
       return;
     }
 
+    document.documentElement.dataset.dialogOpen = "true";
+
+    return () => {
+      delete document.documentElement.dataset.dialogOpen;
+    };
+  }, [product]);
+
+  useEffect(() => {
+    if (!product) {
+      return;
+    }
+
     const root = document.documentElement;
     const previousOverflow = root.style.overflow;
     const previousPadding = root.style.paddingRight;

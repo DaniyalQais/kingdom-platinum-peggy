@@ -23,6 +23,7 @@ export function MobileMenu() {
       return;
     }
 
+    document.body.dataset.menuOpen = "true";
     panelRef.current?.querySelector<HTMLElement>("a, button")?.focus();
 
     const onKeyDown = (event: KeyboardEvent) => {
@@ -45,6 +46,7 @@ export function MobileMenu() {
     document.addEventListener("pointerdown", onPointerDown);
 
     return () => {
+      delete document.body.dataset.menuOpen;
       document.removeEventListener("keydown", onKeyDown);
       document.removeEventListener("pointerdown", onPointerDown);
     };

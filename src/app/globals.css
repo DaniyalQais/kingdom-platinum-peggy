@@ -21,7 +21,9 @@
   --motion-hover: 180ms;
   --motion-overlay: 200ms;
   --motion-enter: 480ms;
+  --motion-reveal: 320ms;
   --motion-stagger: 70ms;
+  --motion-reveal-stagger: 45ms;
   --motion-rise: 14px;
   --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -95,13 +97,20 @@ h2 {
 }
 
 [data-reveal="shown"] {
-  animation: rise-in var(--motion-enter) var(--motion-ease)
+  animation: rise-in var(--motion-reveal) var(--motion-ease)
     var(--reveal-delay, 0ms) both;
 }
 
 [data-reveal="instant"] {
   opacity: 1;
   transform: none;
+}
+
+/* On phones the reveal stays small: artwork lifts a little, text is static */
+@media (max-width: 639px) {
+  [data-reveal] {
+    --motion-rise: 10px;
+  }
 }
 
 /* Primary navigation: brief underline fade without movement */
@@ -271,6 +280,20 @@ dialog.product-dialog[data-closing="true"]::backdrop {
 
 .contact-row:focus-visible .contact-arrow {
   transform: translate(2px, -2px);
+}
+
+/* Back to top: fixed bottom-right, fades in after meaningful scroll */
+.back-to-top {
+  transition:
+    opacity var(--motion-hover) var(--motion-ease),
+    transform var(--motion-hover) var(--motion-ease),
+    background-color var(--motion-hover) var(--motion-ease);
+}
+
+.back-to-top[data-visible="false"] {
+  opacity: 0;
+  transform: translate3d(0, 8px, 0);
+  pointer-events: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

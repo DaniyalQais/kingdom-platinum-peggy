@@ -4,10 +4,10 @@ import { useLayoutEffect } from "react";
 
 function readStagger(): number {
   const value = getComputedStyle(document.documentElement)
-    .getPropertyValue("--motion-stagger")
+    .getPropertyValue("--motion-reveal-stagger")
     .trim();
   const parsed = Number.parseFloat(value);
-  return Number.isFinite(parsed) ? parsed : 70;
+  return Number.isFinite(parsed) ? parsed : 45;
 }
 
 export function ScrollReveal() {
@@ -72,7 +72,7 @@ export function ScrollReveal() {
           element.dataset.reveal = "shown";
         }
       },
-      { rootMargin: "0px 0px -6% 0px", threshold: 0.1 },
+      { rootMargin: "0px 0px 12% 0px", threshold: 0 },
     );
 
     for (const element of elements) {

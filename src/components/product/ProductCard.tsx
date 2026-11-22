@@ -25,7 +25,11 @@ export function ProductCard({
   const productHref = `/products/${product.slug}`;
 
   const artwork = (
-    <div className="product-artwork relative aspect-[4/5] overflow-hidden rounded-lg bg-lavender/60">
+    <div
+      className="product-artwork relative aspect-[4/5] overflow-hidden rounded-lg bg-lavender/60"
+      data-reveal={revealGroup ? "idle" : undefined}
+      data-reveal-group={revealGroup}
+    >
       <Image
         src={product.image.src}
         alt={product.image.alt}
@@ -48,11 +52,7 @@ export function ProductCard({
   );
 
   return (
-    <article
-      className="product-card flex h-full flex-col"
-      data-reveal={revealGroup ? "idle" : undefined}
-      data-reveal-group={revealGroup}
-    >
+    <article className="product-card flex h-full flex-col">
       {dialog ? (
         <button
           type="button"

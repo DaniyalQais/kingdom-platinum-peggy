@@ -12,7 +12,7 @@ const columnLabelClass =
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-line bg-ivory">
+    <footer data-site-footer className="border-t border-line bg-ivory">
       <Container className="py-10 sm:py-12">
         <div className="grid gap-7 sm:grid-cols-[1.5fr_1fr_1fr] sm:gap-10">
           <div className="flex items-center gap-4 sm:block sm:max-w-sm">

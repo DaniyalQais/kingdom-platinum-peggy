@@ -43,6 +43,8 @@ export default function HomePage() {
                 Grace Through Grief
               </p>
               <h1
+                id="home-title"
+                tabIndex={-1}
                 className="hero-enter mt-5 text-balance text-[2.375rem] leading-[1.06] tracking-[-0.02em] text-plum sm:mt-6 sm:text-[3rem] lg:text-[3.5rem] xl:text-[3.75rem]"
                 style={{ animationDelay: "calc(var(--motion-stagger) * 1)" }}
               >
