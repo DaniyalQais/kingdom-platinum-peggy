@@ -17,9 +17,6 @@ import { formatPrice } from "@/lib/format";
 
 const sectionOffsetClass = "scroll-mt-20 md:scroll-mt-24";
 
-const contactRowClass =
-  "contact-row group -mx-2 flex min-h-14 items-center justify-between gap-4 rounded-xl px-4 py-3.5 text-[15px] border border-transparent transition-all duration-[var(--motion-hover)] hover:border-line/70 hover:bg-ivory-deep/80 focus-visible:outline-2 focus-visible:outline-plum focus-visible:outline-offset-2";
-
 export default function HomePage() {
   const collection = collections[0];
   const bundle = getFeaturedBundle();
@@ -437,58 +434,120 @@ export default function HomePage() {
         </section>
 
         {/* CONTACT */}
-        <section id="contact" className={sectionOffsetClass}>
+        <section id="contact" className={`relative bg-gradient-to-b from-transparent via-ivory-deep/40 to-ivory-deep ${sectionOffsetClass}`}>
           <Container className="py-16 sm:py-20 lg:py-24">
-            <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+            <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16 items-start" data-reveal>
               <div>
-                <div className="inline-flex items-center gap-2 rounded-full border border-plum/15 bg-ivory-deep px-3.5 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-plum-soft">
-                  Contact
+                <div className="inline-flex items-center gap-2 rounded-full border border-plum/15 bg-white/80 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-plum-soft shadow-xs backdrop-blur-xs">
+                  <span className="h-1.5 w-1.5 rounded-full bg-plum/60" />
+                  <span>Direct Connect</span>
                 </div>
-                <h2 className="mt-3 text-[1.875rem] leading-[1.1] text-plum sm:text-[2.5rem]">
-                  Get in touch.
+                <h2 className="mt-3.5 text-[2rem] leading-[1.08] text-plum sm:text-[2.5rem] lg:text-[2.75rem]">
+                  Get in <span className="font-serif italic font-normal text-plum-deep">Touch.</span>
                 </h2>
-                <p className="mt-4 max-w-md text-[15px] leading-[1.75] text-plum-soft sm:text-base">
+                <p className="mt-4 max-w-md text-[15px] leading-[1.75] text-plum-soft sm:text-[16px]">
                   {site.contact.intro}
                 </p>
+
+                {/* Concierge Reassurance Card */}
+                <div className="mt-8 rounded-2xl border border-plum/10 bg-white/75 p-5 shadow-xs backdrop-blur-xs max-w-md">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-plum/10 text-plum">
+                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <rect x="2" y="4" width="20" height="16" rx="2" />
+                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-[13px] font-bold text-plum leading-tight">Peggy Saunders</p>
+                      <p className="text-[11px] text-plum-soft">Kingdom Platinum Solutions, LLC</p>
+                    </div>
+                  </div>
+                  <p className="mt-3 text-[12px] sm:text-[13px] leading-relaxed text-plum-soft">
+                    Dedicated to walking with you through faith, grief recovery, and purposeful digital resources.
+                  </p>
+                </div>
               </div>
 
-              <div>
-                <ul className="divide-y divide-line/60 border-y border-line/60">
-                  <li>
-                    <a
-                      href={`mailto:${site.contact.email}`}
-                      className={contactRowClass}
-                    >
-                      <span className="shrink-0 font-medium text-plum">Email</span>
-                      <span className="break-all text-right text-[14px] sm:text-[15px] text-plum-soft underline decoration-line decoration-1 underline-offset-4 transition-colors group-hover:text-plum sm:break-normal">
-                        {site.contact.email}
-                      </span>
-                    </a>
-                  </li>
-                  {site.contact.socials.map((social) => (
-                    <li key={social.href}>
+              <div className="space-y-4">
+                {/* Primary Direct Email Card */}
+                <a
+                  href={`mailto:${site.contact.email}`}
+                  className="group block rounded-2xl border border-plum/12 bg-white/90 p-5 sm:p-6 shadow-xs backdrop-blur-xs transition-all duration-300 hover:-translate-y-1 hover:border-plum/25 hover:shadow-[0_16px_36px_-10px_rgba(56,34,57,0.12)] focus-visible:outline-2 focus-visible:outline-plum focus-visible:outline-offset-2"
+                >
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div className="flex items-center gap-3.5 min-w-0">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-plum to-plum-deep text-ivory shadow-xs transition-transform duration-200 group-hover:scale-105">
+                        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                          <rect x="2" y="4" width="20" height="16" rx="2" />
+                          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                        </svg>
+                      </div>
+                      <div className="min-w-0">
+                        <span className="block text-[10px] font-semibold uppercase tracking-wider text-plum-soft/80">
+                          Direct Email Inquiries
+                        </span>
+                        <p className="text-[15px] sm:text-[16px] font-semibold text-plum truncate group-hover:text-plum-deep transition-colors">
+                          {site.contact.email}
+                        </p>
+                      </div>
+                    </div>
+                    <span className="self-start sm:self-auto inline-flex items-center gap-1.5 rounded-full border border-plum/15 bg-plum/5 px-3.5 py-1.5 text-[12px] font-medium text-plum transition-all duration-200 group-hover:bg-plum group-hover:text-ivory shadow-xs">
+                      <span>Send Email</span>
+                      <span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+                    </span>
+                  </div>
+                </a>
+
+                {/* Social Channel Cards */}
+                <div className="grid gap-3 sm:grid-cols-3">
+                  {site.contact.socials.map((social) => {
+                    const type = social.label.toLowerCase();
+                    return (
                       <a
+                        key={social.href}
                         href={social.href}
                         target="_blank"
                         rel="noreferrer"
-                        className={contactRowClass}
+                        className="group flex flex-col justify-between rounded-xl border border-plum/10 bg-white/75 p-4 shadow-2xs backdrop-blur-xs transition-all duration-300 hover:-translate-y-1 hover:border-plum/22 hover:bg-white hover:shadow-[0_12px_28px_-8px_rgba(56,34,57,0.10)] focus-visible:outline-2 focus-visible:outline-plum focus-visible:outline-offset-2 min-h-[110px]"
                       >
-                        <span className="font-medium text-plum">
-                          {social.label}
-                        </span>
-                        <span
-                          aria-hidden="true"
-                          className="contact-arrow text-base text-plum-soft transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-plum"
-                        >
-                          &#8599;
-                        </span>
-                        <span className="sr-only"> (opens in a new tab)</span>
+                        <div className="flex items-center justify-between">
+                          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-plum/8 text-plum transition-colors group-hover:bg-plum group-hover:text-ivory">
+                            {type === "facebook" ? (
+                              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                              </svg>
+                            ) : type === "instagram" ? (
+                              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                              </svg>
+                            ) : type === "tiktok" ? (
+                              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.298-.002.595.042.88.13V9.4a6.33 6.33 0 0 0-.88-.06A6.34 6.34 0 0 0 3.14 15.7a6.34 6.34 0 0 0 10.82 4.46v-7.14a8.16 8.16 0 0 0 5.63 2.24V11.8a4.84 4.84 0 0 1-3.77-1.57z" />
+                              </svg>
+                            ) : null}
+                          </div>
+                          <span aria-hidden="true" className="text-plum-soft text-sm transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-plum">
+                            &#8599;
+                          </span>
+                        </div>
+                        <div className="mt-3">
+                          <p className="text-[14px] font-semibold text-plum group-hover:text-plum-deep">
+                            {social.label}
+                          </p>
+                          <p className="text-[11px] text-plum-soft">
+                            Follow on {social.label}
+                          </p>
+                        </div>
                       </a>
-                    </li>
-                  ))}
-                </ul>
-                <p className="mt-4 text-xs leading-5 text-plum-soft">
-                  Social links open in a new tab.
+                    );
+                  })}
+                </div>
+
+                <p className="pt-2 text-xs leading-5 text-plum-soft">
+                  Social links open in a new tab • Directly verified channels.
                 </p>
               </div>
             </div>
