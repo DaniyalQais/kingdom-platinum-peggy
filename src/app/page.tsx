@@ -371,36 +371,65 @@ export default function HomePage() {
         {/* JOIN COMMUNITY */}
         <section
           id="community"
-          className={`border-y border-line/60 bg-gradient-to-b from-blush/90 to-blush ${sectionOffsetClass}`}
+          className={`relative border-y border-line/60 bg-gradient-to-b from-ivory-deep via-blush/30 to-ivory-deep overflow-hidden ${sectionOffsetClass}`}
         >
-          <Container className="py-16 sm:py-20 lg:py-24">
+          {/* Subtle atmospheric radial spotlight */}
+          <div
+            className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[34rem] w-[50rem] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(244,224,231,0.7)_0%,rgba(246,241,234,0)_70%)]"
+            aria-hidden="true"
+          />
+
+          <Container className="relative py-16 sm:py-20 lg:py-24">
             <div
-              className="mx-auto max-w-2xl text-center"
+              className="relative mx-auto max-w-4xl overflow-hidden rounded-2xl sm:rounded-3xl border border-plum/12 bg-gradient-to-b from-white/95 via-ivory/90 to-white/95 p-7 sm:p-12 lg:p-14 text-center shadow-[0_20px_50px_-15px_rgba(56,34,57,0.12)] backdrop-blur-md"
               data-reveal
             >
-              <div className="inline-flex items-center gap-2 rounded-full border border-plum/15 bg-ivory/80 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-plum shadow-xs">
-                Community
+              <div className="inline-flex items-center gap-2 rounded-full border border-plum/15 bg-white/90 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-plum shadow-xs">
+                <span className="h-1.5 w-1.5 rounded-full bg-plum/60" />
+                <span>Grace Through Grief Community</span>
               </div>
 
-              <h2 className="mt-3 text-[1.875rem] leading-[1.1] text-plum sm:text-[2.5rem]">
-                {site.community.heading}
+              <h2 className="mt-4 text-[2rem] leading-[1.08] text-plum sm:text-[2.6rem] lg:text-[3rem]">
+                You Are <span className="font-serif italic font-normal text-plum-deep">Not Alone.</span>
               </h2>
 
-              <p className="mx-auto mt-4 max-w-xl text-[15px] leading-[1.75] text-plum-soft sm:text-base">
+              <p className="mx-auto mt-4 max-w-xl text-[15px] leading-[1.75] text-plum-soft sm:text-[17px]">
                 {site.community.description}
               </p>
+
+              {/* 3 Community Value Pillars */}
+              <div className="mt-8 grid gap-3 sm:grid-cols-3 sm:gap-4 text-left">
+                <div className="rounded-xl border border-plum/8 bg-white/70 p-4 shadow-2xs backdrop-blur-xs">
+                  <div className="text-plum font-bold text-sm mb-1">✦ Gentle Encouragement</div>
+                  <p className="text-[12px] sm:text-[13px] leading-relaxed text-plum-soft">
+                    Restorative words and compassionate guidance when grief feels heaviest.
+                  </p>
+                </div>
+                <div className="rounded-xl border border-plum/8 bg-white/70 p-4 shadow-2xs backdrop-blur-xs">
+                  <div className="text-plum font-bold text-sm mb-1">✦ Healing Tools</div>
+                  <p className="text-[12px] sm:text-[13px] leading-relaxed text-plum-soft">
+                    Exclusive early access to devotionals, guided journals, and purposeful tools.
+                  </p>
+                </div>
+                <div className="rounded-xl border border-plum/8 bg-white/70 p-4 shadow-2xs backdrop-blur-xs">
+                  <div className="text-plum font-bold text-sm mb-1">✦ Faith-Rooted Circle</div>
+                  <p className="text-[12px] sm:text-[13px] leading-relaxed text-plum-soft">
+                    A safe, understanding community walking from profound loss into healing.
+                  </p>
+                </div>
+              </div>
 
               <div className="mt-8 flex flex-col items-center">
                 <ButtonLink
                   href={site.community.href}
                   external
                   icon="external"
-                  className="w-full shadow-[0_8px_20px_-8px_rgba(56,34,57,0.35)] sm:w-auto"
+                  className="w-full shadow-[0_12px_28px_-6px_rgba(56,34,57,0.45)] hover:shadow-[0_16px_36px_-6px_rgba(56,34,57,0.55)] hover:-translate-y-0.5 sm:w-auto"
                 >
                   Join the Community
                 </ButtonLink>
-                <p className="mt-2.5 text-xs leading-5 text-plum-soft">
-                  Opens the official community signup page in a new tab.
+                <p className="mt-3 text-xs leading-5 text-plum-soft">
+                  Opens the official community signup page in a new tab • Free to join
                 </p>
               </div>
             </div>
