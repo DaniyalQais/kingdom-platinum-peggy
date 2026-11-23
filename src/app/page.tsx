@@ -239,48 +239,104 @@ export default function HomePage() {
         {/* ABOUT PEGGY */}
         <section
           id="about"
-          className={`border-t border-line/60 bg-ivory-deep ${sectionOffsetClass}`}
+          className={`relative border-t border-line/60 bg-ivory-deep overflow-hidden ${sectionOffsetClass}`}
         >
-          <Container className="py-16 sm:py-20 lg:py-24">
+          {/* Ambient warm radial glow behind the portrait */}
+          <div
+            className="pointer-events-none absolute -left-20 top-1/2 -translate-y-1/2 h-[32rem] w-[32rem] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(244,224,231,0.65)_0%,rgba(246,241,234,0)_70%)]"
+            aria-hidden="true"
+          />
+
+          <Container className="relative py-16 sm:py-20 lg:py-24">
             <div
-              className="grid items-start gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16"
+              className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16"
               data-reveal
             >
-              <div className="mx-auto w-full max-w-[20rem] sm:max-w-[22rem] lg:mx-0 lg:max-w-[25rem]">
-                <div className="overflow-hidden rounded-2xl border border-line/80 bg-blush shadow-[0_20px_40px_-20px_rgba(56,34,57,0.22)]">
+              {/* Left Column: Architectural Portrait Stage */}
+              <div className="relative mx-auto w-full max-w-[20rem] sm:max-w-[23rem] lg:mx-0 lg:max-w-[26rem]">
+                {/* Backdrop decorative aura */}
+                <div
+                  className="pointer-events-none absolute -inset-3 sm:-inset-4 rounded-3xl bg-gradient-to-tr from-lavender/60 via-blush/40 to-white/70 shadow-lg blur-xs"
+                  aria-hidden="true"
+                />
+
+                {/* Primary Framed Portrait */}
+                <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border-2 border-white/90 bg-blush shadow-[0_24px_50px_-15px_rgba(56,34,57,0.25)] ring-1 ring-plum/10">
                   <Image
                     src={site.portrait.src}
                     alt={site.portrait.alt}
                     width={site.portrait.width}
                     height={site.portrait.height}
-                    sizes="(min-width: 1024px) 400px, 88vw"
-                    className="h-auto w-full object-cover transition-transform duration-300 hover:scale-[1.02]"
+                    sizes="(min-width: 1024px) 420px, 88vw"
+                    className="h-auto w-full object-cover transition-transform duration-500 hover:scale-[1.02]"
                   />
+                </div>
+
+                {/* Floating Author Signature Seal Badge */}
+                <div className="absolute -bottom-4 right-3 sm:-bottom-5 sm:right-5 z-10 flex items-center gap-3 rounded-2xl border border-plum/12 bg-white/95 px-4 py-2.5 shadow-[0_14px_30px_-6px_rgba(56,34,57,0.22)] backdrop-blur-md">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-plum to-plum-deep text-[12px] font-bold tracking-wider text-ivory shadow-xs">
+                    PS
+                  </div>
+                  <div>
+                    <p className="text-[12px] font-bold leading-tight text-plum">Peggy Saunders</p>
+                    <p className="text-[10px] font-medium tracking-wide text-plum-soft">Founder & Author</p>
+                  </div>
                 </div>
               </div>
 
+              {/* Right Column: Editorial Bio & Scripture Plaque */}
               <div className="max-w-xl">
-                <div className="inline-flex items-center gap-2 rounded-full border border-plum/15 bg-ivory px-3.5 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-plum-soft shadow-xs">
-                  About Peggy
+                <div className="inline-flex items-center gap-2 rounded-full border border-plum/15 bg-white/80 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-plum-soft shadow-xs backdrop-blur-xs">
+                  <span className="h-1.5 w-1.5 rounded-full bg-plum/60" />
+                  <span>About The Author</span>
                 </div>
 
-                <h2 className="mt-3 text-[1.875rem] leading-[1.1] text-plum sm:text-[2.5rem]">
-                  {site.about.heading}
+                <h2 className="mt-3.5 text-[2rem] leading-[1.08] text-plum sm:text-[2.5rem] lg:text-[2.75rem]">
+                  Meet <span className="font-serif italic font-normal text-plum-deep">Peggy Saunders</span>
                 </h2>
 
-                <div className="mt-5 space-y-4 text-[15px] leading-[1.75] text-plum-soft sm:text-base">
+                <p className="mt-2 text-[12px] sm:text-[13px] font-semibold uppercase tracking-[0.14em] text-plum-soft/80">
+                  Faith-Driven Entrepreneur • Digital Creator • Author
+                </p>
+
+                <div className="mt-6 space-y-4 text-[15px] leading-[1.78] text-plum-soft sm:text-[16px]">
                   {site.about.paragraphs.map((paragraph, index) => (
-                    <p key={index}>{paragraph}</p>
+                    <p key={index} className={index === 0 ? "text-[16px] sm:text-[17px] font-normal leading-[1.8] text-plum/90" : undefined}>
+                      {paragraph}
+                    </p>
                   ))}
                 </div>
 
-                <blockquote className="mt-8 rounded-2xl border border-plum/12 bg-ivory/80 p-5 sm:p-6 shadow-xs backdrop-blur-xs">
-                  <p className="font-display text-[1.125rem] sm:text-[1.25rem] italic leading-[1.6] text-plum">
-                    &ldquo;{site.about.verse.text}&rdquo;
-                  </p>
-                  <footer className="mt-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-plum-soft">
-                    {site.about.verse.reference}
-                  </footer>
+                {/* Author Trust Pillars */}
+                <div className="mt-7 flex flex-wrap items-center gap-2 text-[11px] sm:text-[12px] font-medium text-plum/80">
+                  <span className="rounded-full border border-plum/12 bg-white/70 px-3 py-1 shadow-xs">
+                    ✦ Grief Healing Lifeline
+                  </span>
+                  <span className="rounded-full border border-plum/12 bg-white/70 px-3 py-1 shadow-xs">
+                    ✦ Biblical Merch Planner
+                  </span>
+                  <span className="rounded-full border border-plum/12 bg-white/70 px-3 py-1 shadow-xs">
+                    ✦ Faith-Rooted Guidance
+                  </span>
+                </div>
+
+                {/* Luxury Scripture Plaque */}
+                <blockquote className="relative mt-8 overflow-hidden rounded-2xl sm:rounded-3xl border border-plum/15 bg-gradient-to-br from-white/95 via-ivory/90 to-lavender/30 p-6 sm:p-7 shadow-[0_14px_32px_-8px_rgba(56,34,57,0.10)] backdrop-blur-sm">
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute -top-4 -left-1 font-serif text-[6rem] leading-none text-plum/[0.06] select-none"
+                  >
+                    “
+                  </span>
+                  <div className="relative">
+                    <p className="font-display text-[1.125rem] sm:text-[1.25rem] italic leading-[1.65] text-plum">
+                      &ldquo;{site.about.verse.text}&rdquo;
+                    </p>
+                    <footer className="mt-4 flex items-center gap-2 text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.18em] text-plum/70">
+                      <span className="h-px w-6 bg-plum/30" />
+                      <span>{site.about.verse.reference}</span>
+                    </footer>
+                  </div>
                 </blockquote>
               </div>
             </div>
