@@ -7,6 +7,14 @@ import { ProductCard } from "@/components/product/ProductCard";
 import { ProductDialogProvider } from "@/components/product/ProductDialogProvider";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Container } from "@/components/ui/Container";
+import {
+  ArrowRight,
+  ExternalLink,
+  FacebookIcon,
+  InstagramIcon,
+  TikTokIcon,
+  Mail,
+} from "@/components/ui/icons";
 import { collections } from "@/content/collections";
 import {
   getCollectionResources,
@@ -88,9 +96,11 @@ export default function HomePage() {
                   className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-plum/20 bg-ivory/80 px-5 text-[15px] font-medium text-plum shadow-xs backdrop-blur-xs transition-all hover:border-plum hover:bg-ivory hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-plum focus-visible:outline-offset-2"
                 >
                   <span>Discover the Bundle</span>
-                  <span aria-hidden="true" className="button-arrow">
-                    &#8594;
-                  </span>
+                  <ArrowRight
+                    className="size-[18px] shrink-0 button-arrow"
+                    strokeWidth={2}
+                    aria-hidden="true"
+                  />
                 </Link>
               </div>
 
@@ -453,10 +463,7 @@ export default function HomePage() {
                 <div className="mt-8 rounded-2xl border border-plum/10 bg-white/75 p-5 shadow-xs backdrop-blur-xs max-w-md">
                   <div className="flex items-center gap-3">
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-plum/10 text-plum">
-                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                        <rect x="2" y="4" width="20" height="16" rx="2" />
-                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                      </svg>
+                      <Mail className="size-5 shrink-0 text-plum" strokeWidth={2} aria-hidden="true" />
                     </div>
                     <div>
                       <p className="text-[13px] font-bold text-plum leading-tight">Peggy Saunders</p>
@@ -478,10 +485,7 @@ export default function HomePage() {
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div className="flex items-center gap-3.5 min-w-0">
                       <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-plum to-plum-deep text-ivory shadow-xs transition-transform duration-200 group-hover:scale-105">
-                        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                          <rect x="2" y="4" width="20" height="16" rx="2" />
-                          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                        </svg>
+                        <Mail className="size-5 shrink-0 text-ivory" strokeWidth={2} aria-hidden="true" />
                       </div>
                       <div className="min-w-0">
                         <span className="block text-[10px] font-semibold uppercase tracking-wider text-plum-soft/80">
@@ -494,7 +498,7 @@ export default function HomePage() {
                     </div>
                     <span className="self-start sm:self-auto inline-flex items-center gap-1.5 rounded-full border border-plum/15 bg-plum/5 px-3.5 py-1.5 text-[12px] font-medium text-plum transition-all duration-200 group-hover:bg-plum group-hover:text-ivory shadow-xs">
                       <span>Send Email</span>
-                      <span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+                      <ArrowRight className="size-4 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5" strokeWidth={2} aria-hidden="true" />
                     </span>
                   </div>
                 </a>
@@ -514,24 +518,14 @@ export default function HomePage() {
                         <div className="flex items-center justify-between">
                           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-plum/8 text-plum transition-colors group-hover:bg-plum group-hover:text-ivory">
                             {type === "facebook" ? (
-                              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                              </svg>
+                              <FacebookIcon className="size-4.5 shrink-0" />
                             ) : type === "instagram" ? (
-                              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                              </svg>
+                              <InstagramIcon className="size-4.5 shrink-0" />
                             ) : type === "tiktok" ? (
-                              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.298-.002.595.042.88.13V9.4a6.33 6.33 0 0 0-.88-.06A6.34 6.34 0 0 0 3.14 15.7a6.34 6.34 0 0 0 10.82 4.46v-7.14a8.16 8.16 0 0 0 5.63 2.24V11.8a4.84 4.84 0 0 1-3.77-1.57z" />
-                              </svg>
+                              <TikTokIcon className="size-4.5 shrink-0" />
                             ) : null}
                           </div>
-                          <span aria-hidden="true" className="text-plum-soft text-sm transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-plum">
-                            &#8599;
-                          </span>
+                          <ExternalLink className="size-4 shrink-0 text-plum-soft transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-plum" strokeWidth={2} aria-hidden="true" />
                         </div>
                         <div className="mt-3">
                           <p className="text-[14px] font-semibold text-plum group-hover:text-plum-deep">

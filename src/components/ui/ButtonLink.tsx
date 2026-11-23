@@ -4,6 +4,7 @@ import {
   buttonClasses,
   type ButtonVariant,
 } from "@/components/ui/button-styles";
+import { ArrowRight, ExternalLink } from "@/components/ui/icons";
 
 type ButtonLinkProps = {
   href: string;
@@ -28,16 +29,20 @@ export function ButtonLink({
 
   const content = (
     <>
-      {children}
+      <span>{children}</span>
       {icon === "arrow" ? (
-        <span aria-hidden="true" className="button-arrow text-[0.95em]">
-          &#8594;
-        </span>
+        <ArrowRight
+          className="size-[18px] shrink-0 button-arrow"
+          strokeWidth={2}
+          aria-hidden="true"
+        />
       ) : null}
       {icon === "external" ? (
-        <span aria-hidden="true" className="text-[0.95em]">
-          &#8599;
-        </span>
+        <ExternalLink
+          className="size-[18px] shrink-0"
+          strokeWidth={2}
+          aria-hidden="true"
+        />
       ) : null}
     </>
   );

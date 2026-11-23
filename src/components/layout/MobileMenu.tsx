@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useActiveSection } from "@/components/layout/useActiveSection";
 import { ButtonLink } from "@/components/ui/ButtonLink";
+import { Menu, X } from "@/components/ui/icons";
 import { mobileNavLinks } from "@/content/navigation";
 
 const mobileSectionIds = mobileNavLinks.map((link) => link.id);
@@ -179,34 +180,9 @@ export function MobileMenu() {
         className="flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-lg border border-line text-plum transition-colors hover:bg-ivory-deep focus-visible:outline-2 focus-visible:outline-plum focus-visible:outline-offset-2"
       >
         {open ? (
-          <svg
-            className="h-5 w-5"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.25"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
-          >
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
-          </svg>
+          <X className="h-[22px] w-[22px] shrink-0" strokeWidth={2} aria-hidden="true" />
         ) : (
-          <svg
-            className="h-5 w-5"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.25"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
-          >
-            <line x1="4" y1="6" x2="20" y2="6" />
-            <line x1="4" y1="12" x2="20" y2="12" />
-            <line x1="4" y1="18" x2="20" y2="18" />
-          </svg>
+          <Menu className="h-[22px] w-[22px] shrink-0" strokeWidth={2} aria-hidden="true" />
         )}
       </button>
 

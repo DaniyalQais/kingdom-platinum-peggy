@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useProductDialog } from "@/components/product/ProductDialogProvider";
+import { ArrowRight } from "@/components/ui/icons";
 import { formatPrice } from "@/lib/format";
 import type { Product } from "@/lib/types";
 
@@ -116,23 +117,27 @@ export function ProductCard({
                 type="button"
                 aria-haspopup="dialog"
                 onClick={() => dialog.open(product)}
-                className="inline-flex min-h-11 sm:min-h-9 items-center gap-1 sm:gap-1.5 rounded-full border border-plum/15 bg-plum/5 px-2.5 sm:px-3 py-1 sm:py-1.5 text-[11px] sm:text-[12px] font-medium text-plum transition-all duration-200 group-hover:border-plum group-hover:bg-plum group-hover:text-ivory shadow-xs focus-visible:outline-2 focus-visible:outline-plum focus-visible:outline-offset-2"
+                className="inline-flex min-h-11 sm:min-h-9 items-center gap-1.5 rounded-full border border-plum/15 bg-plum/5 px-2.5 sm:px-3 py-1 sm:py-1.5 text-[11px] sm:text-[12px] font-medium text-plum transition-all duration-200 group-hover:border-plum group-hover:bg-plum group-hover:text-ivory shadow-xs focus-visible:outline-2 focus-visible:outline-plum focus-visible:outline-offset-2"
               >
-                <span>Details</span>
-                <span aria-hidden="true" className="card-arrow transition-transform duration-200 group-hover:translate-x-0.5">
-                  &#8594;
-                </span>
+                <span>View details</span>
+                <ArrowRight
+                  className="card-arrow size-3.5 sm:size-4 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5"
+                  strokeWidth={2}
+                  aria-hidden="true"
+                />
                 <span className="sr-only"> for {product.title}</span>
               </button>
             ) : (
               <Link
                 href={productHref}
-                className="inline-flex min-h-11 sm:min-h-9 items-center gap-1 sm:gap-1.5 rounded-full border border-plum/15 bg-plum/5 px-2.5 sm:px-3 py-1 sm:py-1.5 text-[11px] sm:text-[12px] font-medium text-plum transition-all duration-200 group-hover:border-plum group-hover:bg-plum group-hover:text-ivory shadow-xs focus-visible:outline-2 focus-visible:outline-plum focus-visible:outline-offset-2"
+                className="inline-flex min-h-11 sm:min-h-9 items-center gap-1.5 rounded-full border border-plum/15 bg-plum/5 px-2.5 sm:px-3 py-1 sm:py-1.5 text-[11px] sm:text-[12px] font-medium text-plum transition-all duration-200 group-hover:border-plum group-hover:bg-plum group-hover:text-ivory shadow-xs focus-visible:outline-2 focus-visible:outline-plum focus-visible:outline-offset-2"
               >
-                <span>Details</span>
-                <span aria-hidden="true" className="card-arrow transition-transform duration-200 group-hover:translate-x-0.5">
-                  &#8594;
-                </span>
+                <span>View details</span>
+                <ArrowRight
+                  className="card-arrow size-3.5 sm:size-4 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5"
+                  strokeWidth={2}
+                  aria-hidden="true"
+                />
                 <span className="sr-only"> for {product.title}</span>
               </Link>
             )}

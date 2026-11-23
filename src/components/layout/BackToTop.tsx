@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { ArrowUp } from "@/components/ui/icons";
 
 const SHOW_AFTER_RATIO = 0.75;
 
@@ -100,9 +101,7 @@ export function BackToTop() {
       aria-label="Back to top"
       className="back-to-top fixed z-40 flex size-11 items-center justify-center rounded-full border border-plum-deep/30 bg-plum text-ivory shadow-[0_12px_28px_-14px_rgba(42,23,47,0.75)] hover:bg-plum-deep focus-visible:outline-2 focus-visible:outline-plum-deep focus-visible:outline-offset-2"
     >
-      <span aria-hidden="true" className="text-lg leading-none">
-        &#8593;
-      </span>
+      <ArrowUp className="size-5 shrink-0" strokeWidth={2} aria-hidden="true" />
     </button>
   );
 }

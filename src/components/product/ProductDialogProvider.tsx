@@ -13,6 +13,7 @@ import {
   type ReactNode,
 } from "react";
 import { ButtonLink } from "@/components/ui/ButtonLink";
+import { X } from "@/components/ui/icons";
 import { formatPrice } from "@/lib/format";
 import type { Product } from "@/lib/types";
 
@@ -198,9 +199,7 @@ export function ProductDialogProvider({ children }: { children: ReactNode }) {
               aria-label="Close product details"
               className="absolute right-3.5 top-3.5 z-10 flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-lg border border-line bg-ivory/95 text-plum transition-colors hover:bg-blush focus-visible:outline-2 focus-visible:outline-plum focus-visible:outline-offset-2"
             >
-              <span aria-hidden="true" className="text-lg leading-none">
-                &#10005;
-              </span>
+              <X className="size-5 shrink-0" strokeWidth={2} aria-hidden="true" />
             </button>
 
             <div className="grid max-h-[min(90vh,52rem)] overflow-y-auto md:grid-cols-[0.92fr_1.08fr]">
