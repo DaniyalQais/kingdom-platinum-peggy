@@ -14,7 +14,7 @@ export function SiteFooter() {
       />
 
       <Container className="pt-14 pb-32 sm:pt-16 sm:pb-28">
-        <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr_1.1fr] lg:gap-14">
+        <div className="grid gap-10 md:grid-cols-[1.5fr_1fr] md:gap-16 items-start">
           {/* Brand & Mission Column */}
           <div className="flex flex-col items-start">
             <Link
@@ -42,7 +42,7 @@ export function SiteFooter() {
               </div>
             </Link>
 
-            <div className="mt-5 max-w-sm">
+            <div className="mt-5 max-w-md">
               <div className="inline-flex items-center gap-2 rounded-full border border-ivory/15 bg-ivory/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-ivory/80 backdrop-blur-xs">
                 Grace Through Grief
               </div>
@@ -54,11 +54,11 @@ export function SiteFooter() {
           </div>
 
           {/* Navigation Column */}
-          <nav aria-label="Footer Navigation" className="flex flex-col">
+          <nav aria-label="Footer Navigation" className="flex flex-col md:justify-self-end">
             <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-ivory/60">
               Explore Collection
             </p>
-            <ul className="mt-4 flex flex-col space-y-1.5">
+            <ul className="mt-4 flex flex-col space-y-2">
               {footerLinks.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -72,57 +72,6 @@ export function SiteFooter() {
               ))}
             </ul>
           </nav>
-
-          {/* Connect Column */}
-          <div className="flex flex-col">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-ivory/60">
-              Connect With Us
-            </p>
-            <div className="mt-4 flex flex-col gap-2.5">
-              <a
-                href={`mailto:${site.contact.email}`}
-                className="group flex min-h-11 items-center justify-between rounded-xl border border-ivory/10 bg-ivory/5 px-4 py-2.5 text-[14px] text-ivory/90 backdrop-blur-xs transition-all duration-[var(--motion-hover)] hover:border-ivory/25 hover:bg-ivory/10 hover:text-ivory focus-visible:outline-2 focus-visible:outline-ivory focus-visible:outline-offset-2"
-              >
-                <div className="flex items-center gap-2.5 min-w-0">
-                  <svg
-                    className="size-4 shrink-0 text-ivory/70 transition-colors group-hover:text-ivory"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                    <polyline points="22,6 12,13 2,6" />
-                  </svg>
-                  <span className="truncate">{site.contact.email}</span>
-                </div>
-                <span aria-hidden="true" className="shrink-0 text-ivory/50 transition-transform group-hover:translate-x-0.5 group-hover:text-ivory">
-                  &#8594;
-                </span>
-              </a>
-
-              <div className="flex flex-wrap gap-2 pt-1">
-                {site.contact.socials.map((social) => (
-                  <a
-                    key={social.href}
-                    href={social.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex min-h-10 items-center gap-2 rounded-lg border border-ivory/10 bg-ivory/5 px-3.5 py-1.5 text-[13px] font-medium text-ivory/85 backdrop-blur-xs transition-all duration-[var(--motion-hover)] hover:border-ivory/25 hover:bg-ivory/12 hover:text-ivory focus-visible:outline-2 focus-visible:outline-ivory focus-visible:outline-offset-2"
-                  >
-                    <span>{social.label}</span>
-                    <span aria-hidden="true" className="text-xs text-ivory/50">
-                      &#8599;
-                    </span>
-                    <span className="sr-only"> (opens in a new tab)</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* Bottom divider & Legal bar */}
