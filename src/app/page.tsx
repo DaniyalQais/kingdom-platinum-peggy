@@ -183,53 +183,78 @@ export default function HomePage() {
         >
           <Container>
             <div
-              className="relative grid overflow-hidden rounded-2xl sm:rounded-3xl border border-plum/20 bg-plum-deep shadow-[0_24px_50px_-20px_rgba(42,23,47,0.4)] lg:grid-cols-2"
+              className="relative grid overflow-hidden rounded-2xl sm:rounded-3xl border border-plum/20 bg-gradient-to-br from-plum-deep via-[#311b37] to-plum-deep shadow-[0_28px_60px_-20px_rgba(42,23,47,0.45)] ring-1 ring-white/10 lg:grid-cols-2"
               data-reveal
             >
               {/* Left Artwork Chamber */}
-              <div className="relative flex items-center justify-center bg-gradient-to-br from-lavender to-lavender/80 px-6 py-12 sm:p-14 lg:p-16">
+              <div className="relative flex items-center justify-center bg-[radial-gradient(ellipse_at_50%_45%,rgba(255,255,255,0.85)_0%,rgba(234,225,240,0.65)_50%,rgba(215,200,222,0.45)_100%)] px-6 py-12 sm:p-14 lg:p-16">
+                {/* Floating 2-in-1 Pill */}
+                <span className="absolute left-4 top-4 z-10 flex items-center gap-1.5 rounded-full border border-plum/12 bg-white/95 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-plum shadow-xs backdrop-blur-md">
+                  <span className="text-plum font-bold">✦</span> 2-in-1 Digital Collection
+                </span>
+
                 <Image
                   src={bundle.image.src}
                   alt={bundle.image.alt}
                   width={bundle.image.width}
                   height={bundle.image.height}
                   sizes="(min-width: 1024px) 500px, 88vw"
-                  className="h-auto w-full max-w-[27rem] object-contain drop-shadow-[0_24px_32px_rgba(56,34,57,0.25)] transition-transform duration-300 hover:scale-[1.02]"
+                  className="h-auto w-full max-w-[27rem] object-contain drop-shadow-[0_24px_35px_rgba(56,34,57,0.30)] transition-transform duration-500 ease-out hover:scale-[1.03]"
                 />
               </div>
 
               {/* Right Content Chamber */}
               <div className="dark-surface flex flex-col justify-center px-6 py-10 text-ivory sm:px-12 lg:px-16 lg:py-16">
                 <div className="inline-flex items-center gap-2 self-start rounded-full border border-ivory/20 bg-ivory/10 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-ivory/90 backdrop-blur-xs">
-                  Featured Digital Bundle
+                  <span className="h-1.5 w-1.5 rounded-full bg-blush" />
+                  <span>Featured Digital Bundle</span>
                 </div>
 
-                <h2 className="mt-4 text-[1.875rem] leading-[1.1] text-ivory sm:text-[2.25rem] lg:text-[2.5rem]">
-                  {bundle.title}
+                <h2 className="mt-4 text-[1.875rem] leading-[1.1] text-ivory sm:text-[2.25rem] lg:text-[2.6rem]">
+                  Grace Through Grief <span className="font-serif italic font-normal text-blush">Bundle</span>
                 </h2>
 
-                <div className="mt-4 flex items-baseline gap-3">
-                  <span className="text-[1.625rem] sm:text-[1.875rem] font-medium text-ivory">
+                <div className="mt-5 flex flex-wrap items-baseline gap-3">
+                  <span className="text-[2rem] sm:text-[2.25rem] font-bold tracking-tight text-ivory">
                     {formatPrice(bundle.priceCents)}
                   </span>
                   {bundle.compareAtPriceCents ? (
-                    <span className="text-[1.125rem] font-normal text-ivory/50 line-through">
+                    <span className="text-[1.25rem] font-normal text-ivory/45 line-through">
                       {formatPrice(bundle.compareAtPriceCents)}
                     </span>
                   ) : null}
-                  <span className="rounded-full bg-blush/20 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-blush">
-                    Best Value
+                  <span className="rounded-full border border-blush/30 bg-blush/15 px-3 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-blush shadow-xs">
+                    Save $70 • 72% Off
                   </span>
                 </div>
 
                 {bundle.excerpt ? (
-                  <p className="mt-4 max-w-md text-[15px] sm:text-base leading-[1.7] text-ivory/85">
+                  <p className="mt-4 max-w-lg text-[15px] sm:text-base leading-[1.75] text-ivory/85">
                     {bundle.excerpt}
                   </p>
                 ) : null}
 
-                <div className="mt-8">
+                {/* Bundle Inclusions Checklist */}
+                <div className="mt-6 space-y-2.5 border-t border-white/10 pt-5">
+                  <div className="flex items-start gap-2.5 text-[13px] sm:text-[14px] text-ivory/90">
+                    <span className="text-blush font-bold shrink-0">✓</span>
+                    <span><strong>Breakthrough Processing Journal:</strong> Daily anchors, permission slips & glimmer trackers.</span>
+                  </div>
+                  <div className="flex items-start gap-2.5 text-[13px] sm:text-[14px] text-ivory/90">
+                    <span className="text-blush font-bold shrink-0">✓</span>
+                    <span><strong>Grace Through Grief Ebook:</strong> Restorative guide by Peggy Saunders to rebuild after loss.</span>
+                  </div>
+                  <div className="flex items-start gap-2.5 text-[13px] sm:text-[14px] text-ivory/90">
+                    <span className="text-blush font-bold shrink-0">✓</span>
+                    <span><strong>Multi-Device Ready:</strong> Instant PDF & tablet-optimized interactive format.</span>
+                  </div>
+                </div>
+
+                <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-5">
                   <BundleDialogButton product={bundle} />
+                  <span className="text-[12px] font-medium text-ivory/60">
+                    Instant digital download • Lifetime access
+                  </span>
                 </div>
               </div>
             </div>
