@@ -33,19 +33,23 @@ export default function HomePage() {
         {/* HERO SECTION */}
         <section
           id="home"
-          className={`relative overflow-hidden border-b border-line/50 bg-gradient-to-b from-lavender/90 via-lavender to-ivory ${sectionOffsetClass}`}
+          className={`relative overflow-hidden border-b border-line/50 bg-gradient-to-b from-lavender/95 via-lavender/80 to-ivory ${sectionOffsetClass}`}
         >
-          {/* Subtle Ambient Radial Highlight */}
+          {/* Subtle Ambient Radial Highlight & Background Atmosphere */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute -top-24 left-1/2 h-[26rem] w-[46rem] -translate-x-1/2 rounded-full bg-gradient-to-br from-blush/40 via-lavender/30 to-transparent blur-3xl"
+            className="pointer-events-none absolute -top-32 left-1/2 h-[32rem] w-[54rem] -translate-x-1/2 rounded-full bg-gradient-to-br from-blush/40 via-lavender/30 to-transparent blur-3xl"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute right-0 top-1/3 h-72 w-72 rounded-full bg-blush/20 blur-2xl"
           />
 
-          <Container className="relative grid items-center gap-10 py-12 sm:py-16 lg:grid-cols-[1.12fr_0.88fr] lg:gap-16 lg:py-24">
+          <Container className="relative grid items-center gap-12 py-12 sm:py-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:py-24">
             <div className="mx-auto max-w-xl text-center lg:mx-0 lg:text-left">
               {/* Luxury Badge */}
-              <div className="hero-enter inline-flex items-center gap-2 rounded-full border border-plum/15 bg-ivory/80 px-4 py-1.5 shadow-xs backdrop-blur-sm">
-                <span className="size-1.5 rounded-full bg-plum/70 animate-pulse" />
+              <div className="hero-enter inline-flex items-center gap-2 rounded-full border border-plum/15 bg-white/70 px-4 py-1.5 shadow-[0_4px_12px_rgba(56,34,57,0.06)] backdrop-blur-md">
+                <span className="size-2 rounded-full bg-plum/70 animate-pulse" />
                 <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-plum">
                   Grace Through Grief Collection
                 </span>
@@ -54,40 +58,59 @@ export default function HomePage() {
               <h1
                 id="home-title"
                 tabIndex={-1}
-                className="hero-enter mt-5 text-balance text-[2.5rem] leading-[1.05] tracking-[-0.025em] text-plum sm:mt-6 sm:text-[3.25rem] lg:text-[3.65rem] xl:text-[4rem]"
+                className="hero-enter mt-5 text-balance text-[2.5rem] leading-[1.04] tracking-[-0.03em] text-plum sm:mt-6 sm:text-[3.25rem] lg:text-[3.65rem] xl:text-[4rem]"
                 style={{ animationDelay: "calc(var(--motion-stagger) * 1)" }}
               >
-                A little space for reflection.
+                A little space for{" "}
+                <span className="font-serif italic font-normal text-plum-deep underline decoration-blush/80 decoration-4 underline-offset-6">
+                  reflection.
+                </span>
               </h1>
 
               <p
-                className="hero-enter mx-auto mt-4 max-w-md text-base leading-[1.7] text-plum-soft sm:mt-6 sm:text-lg lg:mx-0"
+                className="hero-enter mx-auto mt-5 max-w-lg text-[16px] leading-[1.75] text-plum-soft sm:mt-6 sm:text-[18px] lg:mx-0"
                 style={{ animationDelay: "calc(var(--motion-stagger) * 2)" }}
               >
-                Explore the Grace Through Grief collection of devotionals,
-                journals, planners, and workbooks designed to comfort and uplift.
+                Gentle devotionals, guided journals, planners, and workbooks designed by
+                Peggy Saunders to bring comfort, faith, and purposeful healing.
               </p>
 
               <div
-                className="hero-enter mt-8 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4 lg:justify-start"
+                className="hero-enter mt-8 flex flex-col items-center gap-3.5 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4 lg:justify-start"
                 style={{ animationDelay: "calc(var(--motion-stagger) * 3)" }}
               >
                 <ButtonLink
                   href="/#resources"
                   icon="arrow"
-                  className="w-full shadow-[0_8px_20px_-8px_rgba(56,34,57,0.4)] sm:w-auto"
+                  className="w-full shadow-[0_12px_28px_-6px_rgba(56,34,57,0.45)] transition-all hover:shadow-[0_16px_36px_-6px_rgba(56,34,57,0.55)] hover:-translate-y-0.5 sm:w-auto"
                 >
                   Explore Resources
                 </ButtonLink>
                 <Link
                   href="/#featured-bundle"
-                  className="inline-flex min-h-12 items-center gap-2 rounded-lg px-3 text-[15px] font-medium text-plum underline decoration-plum/30 decoration-1 underline-offset-6 transition-colors hover:decoration-plum hover:text-plum-deep focus-visible:outline-2 focus-visible:outline-plum focus-visible:outline-offset-2"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-plum/20 bg-ivory/80 px-5 text-[15px] font-medium text-plum shadow-xs backdrop-blur-xs transition-all hover:border-plum hover:bg-ivory hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-plum focus-visible:outline-offset-2"
                 >
-                  Discover the Bundle
+                  <span>Discover the Bundle</span>
                   <span aria-hidden="true" className="button-arrow">
                     &#8594;
                   </span>
                 </Link>
+              </div>
+
+              {/* Verified Reassurance Trust Strip */}
+              <div
+                className="hero-enter mt-9 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 border-t border-plum/10 pt-6 text-[12px] sm:text-[13px] font-medium text-plum/75 lg:justify-start"
+                style={{ animationDelay: "calc(var(--motion-stagger) * 4)" }}
+              >
+                <div className="flex items-center gap-1.5">
+                  <span className="text-plum font-bold">✓</span> Instant Digital Access
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-plum font-bold">✓</span> 7 Verified Editions
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-plum font-bold">✓</span> Faith & Healing Centered
+                </div>
               </div>
             </div>
 
