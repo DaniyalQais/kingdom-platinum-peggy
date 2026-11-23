@@ -126,26 +126,44 @@ export default function HomePage() {
         />
 
         {/* RESOURCE COLLECTION */}
-        <section id="resources" className={sectionOffsetClass}>
-          <Container className="py-16 sm:py-20 lg:py-24">
+        <section id="resources" className={`relative ${sectionOffsetClass}`}>
+          {/* Subtle atmospheric ambient glow behind the collection */}
+          <div
+            className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-lavender/30 to-transparent"
+            aria-hidden="true"
+          />
+
+          <Container className="relative py-16 sm:py-20 lg:py-24">
             <div
-              className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between lg:gap-10"
+              className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-10 border-b border-plum/10 pb-8 sm:pb-10"
               data-reveal
             >
               <div>
-                <div className="inline-flex items-center gap-2 rounded-full border border-plum/15 bg-ivory-deep/80 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-plum-soft">
-                  The Collection
+                <div className="inline-flex items-center gap-2 rounded-full border border-plum/15 bg-white/80 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-plum-soft shadow-xs backdrop-blur-xs">
+                  <span className="h-1.5 w-1.5 rounded-full bg-plum/60" />
+                  <span>The Collection</span>
                 </div>
-                <h2 className="mt-3 text-[2rem] leading-[1.08] text-plum sm:text-[2.5rem]">
+                <h2 className="mt-3.5 text-[2rem] leading-[1.08] text-plum sm:text-[2.5rem] lg:text-[2.75rem]">
                   {collection.name}
                 </h2>
               </div>
-              <p className="max-w-sm text-[15px] leading-relaxed text-plum-soft sm:text-base">
-                {collection.summary}
-              </p>
+              <div className="max-w-md">
+                <p className="text-[15px] leading-relaxed text-plum-soft sm:text-base">
+                  {collection.summary}
+                </p>
+                <div className="mt-3.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-[12px] font-medium text-plum/75">
+                  <span className="flex items-center gap-1.5">
+                    <span className="text-plum font-bold">✓</span> 6 Curated Editions
+                  </span>
+                  <span className="text-plum/30">•</span>
+                  <span>Instant PDF & EPUB</span>
+                  <span className="text-plum/30">•</span>
+                  <span>Verified Guidance</span>
+                </div>
+              </div>
             </div>
 
-            <div className="mt-10 grid grid-cols-2 gap-x-4 gap-y-10 sm:mt-14 sm:gap-x-6 sm:gap-y-12 lg:grid-cols-3 lg:gap-x-8">
+            <div className="mt-8 grid grid-cols-2 gap-3.5 sm:mt-12 sm:gap-6 lg:grid-cols-3 lg:gap-8">
               {resources.map((product) => (
                 <ProductCard
                   key={product.slug}
