@@ -281,12 +281,20 @@ dialog.product-dialog[data-closing="true"]::backdrop {
   transform: translate(2px, -2px);
 }
 
-/* Back to top: fixed bottom-right, fades in after meaningful scroll */
+/* Back to top: fixed bottom-right, stacks above floating bar on mobile */
 .back-to-top {
+  right: calc(1rem + env(safe-area-inset-right));
+  bottom: calc(4.75rem + env(safe-area-inset-bottom));
   transition:
     opacity var(--motion-hover) var(--motion-ease),
     transform var(--motion-hover) var(--motion-ease),
     background-color var(--motion-hover) var(--motion-ease);
+}
+
+@media (min-width: 640px) {
+  .back-to-top {
+    bottom: calc(1rem + env(safe-area-inset-bottom));
+  }
 }
 
 .back-to-top[data-visible="false"] {

@@ -98,11 +98,7 @@ export function BackToTop() {
       inert={!visible}
       data-visible={visible ? "true" : "false"}
       aria-label="Back to top"
-      className="back-to-top fixed z-40 flex size-11 items-center justify-center rounded-full border border-plum-deep/30 bg-plum text-ivory shadow-[0_12px_28px_-14px_rgba(42,23,47,0.75)] hover:bg-plum-deep"
-      style={{
-        right: "calc(1rem + env(safe-area-inset-right))",
-        bottom: "calc(1rem + env(safe-area-inset-bottom))",
-      }}
+      className="back-to-top fixed z-40 flex size-11 items-center justify-center rounded-full border border-plum-deep/30 bg-plum text-ivory shadow-[0_12px_28px_-14px_rgba(42,23,47,0.75)] hover:bg-plum-deep focus-visible:outline-2 focus-visible:outline-plum-deep focus-visible:outline-offset-2"
     >
       <span aria-hidden="true" className="text-lg leading-none">
         &#8593;

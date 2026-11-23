@@ -13,7 +13,7 @@ const columnLabelClass =
 export function SiteFooter() {
   return (
     <footer data-site-footer className="border-t border-line bg-ivory">
-      <Container className="py-10 sm:py-14">
+      <Container className="pt-10 pb-28 sm:pt-14 sm:pb-24">
         <div className="grid gap-8 sm:grid-cols-[1.5fr_1fr_1fr] sm:gap-10">
           <div className="flex flex-col items-start gap-3 sm:max-w-sm">
             <Link
