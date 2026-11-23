@@ -29,10 +29,21 @@ export function useProductDialog(): ProductDialogApi | null {
 export function ProductDialogProvider({ children }: { children: ReactNode }) {
   const [product, setProduct] = useState<Product | null>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const openerRef = useRef<HTMLElement | null>(null);
   const closeTimer = useRef<number | null>(null);
 
-  const open = useCallback((next: Product) => setProduct(next), []);
-  const close = useCallback(() => setProduct(null), []);
+  const open = useCallback((next: Product) => {
+    if (typeof document !== "undefined") {
+      openerRef.current = document.activeElement as HTMLElement | null;
+    }
+    setProduct(next);
+  }, []);
+
+  const close = useCallback(() => {
+    setProduct(null);
+    openerRef.current?.focus({ preventScroll: true });
+  }, []);
+
   const api = useMemo(() => ({ open }), [open]);
 
   const clearCloseTimer = useCallback(() => {
@@ -176,7 +187,7 @@ export function ProductDialogProvider({ children }: { children: ReactNode }) {
             requestClose();
           }
         }}
-        className="product-dialog m-auto w-[min(60rem,calc(100vw-2rem))] max-h-[min(90vh,54rem)] overflow-hidden rounded-lg bg-ivory p-0 text-plum"
+        className="product-dialog m-auto w-[min(58rem,calc(100vw-2rem))] max-h-[min(90vh,52rem)] overflow-hidden rounded-xl border border-line/60 bg-ivory p-0 text-plum shadow-[0_24px_60px_-20px_rgba(42,23,47,0.45)]"
       >
         {product ? (
           <>
@@ -185,22 +196,22 @@ export function ProductDialogProvider({ children }: { children: ReactNode }) {
               data-dialog-close
               onClick={requestClose}
               aria-label="Close product details"
-              className="absolute right-3 top-3 z-10 flex h-11 w-11 items-center justify-center rounded-lg border border-line bg-ivory/95 text-plum transition-colors hover:bg-blush"
+              className="absolute right-3.5 top-3.5 z-10 flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-lg border border-line bg-ivory/95 text-plum transition-colors hover:bg-blush focus-visible:outline-2 focus-visible:outline-plum focus-visible:outline-offset-2"
             >
               <span aria-hidden="true" className="text-lg leading-none">
                 &#10005;
               </span>
             </button>
 
-            <div className="grid max-h-[min(90vh,54rem)] overflow-y-auto md:grid-cols-[0.92fr_1.08fr]">
-              <div className="flex items-center justify-center bg-lavender p-6 sm:p-10">
+            <div className="grid max-h-[min(90vh,52rem)] overflow-y-auto md:grid-cols-[0.92fr_1.08fr]">
+              <div className="flex items-center justify-center bg-lavender/80 p-6 sm:p-10">
                 <Image
                   src={product.image.src}
                   alt={product.image.alt}
                   width={product.image.width}
                   height={product.image.height}
                   sizes="(min-width: 768px) 420px, 80vw"
-                  className="h-auto max-h-[38vh] w-full max-w-[20rem] object-contain drop-shadow-[0_16px_20px_rgba(56,34,57,0.16)] md:max-h-[58vh] md:max-w-[22rem]"
+                  className="h-auto max-h-[36vh] w-full max-w-[19rem] object-contain drop-shadow-[0_16px_22px_rgba(56,34,57,0.18)] md:max-h-[56vh] md:max-w-[22rem]"
                 />
               </div>
 
@@ -210,11 +221,11 @@ export function ProductDialogProvider({ children }: { children: ReactNode }) {
                 </p>
                 <h2
                   id="product-dialog-title"
-                  className="mt-2 pr-12 text-[1.75rem] leading-[1.08] text-plum sm:text-[2rem]"
+                  className="mt-2 pr-12 text-[1.75rem] leading-[1.12] text-plum sm:text-[2rem]"
                 >
                   {product.title}
                 </h2>
-                <p className="mt-4 text-[1.25rem] font-medium text-plum">
+                <p className="mt-4 text-[1.375rem] font-medium text-plum">
                   <span className="sr-only">Price: </span>
                   {formatPrice(product.priceCents)}
                 </p>

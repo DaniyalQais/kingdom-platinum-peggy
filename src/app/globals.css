@@ -190,22 +190,21 @@ button:focus-visible > .button-arrow {
   transform: translateX(3px);
 }
 
-/* Mobile menu */
-@keyframes menu-in {
+/* Full-width mobile dropdown menu */
+@keyframes mobile-dropdown-down {
   from {
     opacity: 0;
-    transform: translate3d(0, -4px, 0) scale(0.98);
+    transform: translate3d(0, -8px, 0);
   }
 
   to {
     opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1);
+    transform: translate3d(0, 0, 0);
   }
 }
 
-.menu-panel {
-  animation: menu-in var(--motion-overlay) var(--motion-ease);
-  transform-origin: top right;
+.mobile-dropdown-panel {
+  animation: mobile-dropdown-down var(--motion-overlay) var(--motion-ease);
 }
 
 /* Product dialog */

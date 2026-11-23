@@ -72,11 +72,11 @@ export function ScrollReveal() {
           element.dataset.reveal = "shown";
         }
       },
-      { rootMargin: "0px 0px 12% 0px", threshold: 0 },
+      { rootMargin: "0px 0px 25% 0px", threshold: 0 },
     );
 
     for (const element of elements) {
-      if (element.getBoundingClientRect().top < window.innerHeight * 0.95) {
+      if (element.getBoundingClientRect().top < window.innerHeight * 1.05) {
         element.dataset.reveal = "instant";
       } else {
         element.dataset.reveal = "pending";

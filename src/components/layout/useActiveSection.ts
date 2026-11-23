@@ -3,13 +3,14 @@
 import { useEffect, useState } from "react";
 import { sectionLinks } from "@/content/navigation";
 
-const ids = sectionLinks.map((link) => link.id);
+const defaultIds = sectionLinks.map((link) => link.id);
 
-export function useActiveSection(): string | null {
+export function useActiveSection(customIds?: readonly string[]): string | null {
   const [active, setActive] = useState<string | null>(null);
 
   useEffect(() => {
     let frame = 0;
+    const ids = customIds ?? defaultIds;
 
     const update = () => {
       frame = 0;
@@ -33,6 +34,10 @@ export function useActiveSection(): string | null {
         }
       }
 
+      if (!current && window.scrollY < 200 && ids.includes("home")) {
+        current = "home";
+      }
+
       setActive((previous) => (previous === current ? previous : current));
     };
 
@@ -51,7 +56,8 @@ export function useActiveSection(): string | null {
       window.removeEventListener("scroll", schedule);
       window.removeEventListener("resize", schedule);
     };
-  }, []);
+  }, [customIds]);
 
   return active;
 }
+

@@ -82,7 +82,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <section className="pb-16 lg:pb-24">
         <Container className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
           <div
-            className={`relative mx-auto flex w-full max-w-sm items-center overflow-hidden rounded-lg bg-lavender p-6 sm:p-10 lg:mx-0 lg:max-w-none ${
+            className={`relative mx-auto flex w-full max-w-sm items-center overflow-hidden rounded-xl border border-plum/10 bg-lavender/80 p-6 shadow-[0_16px_32px_-16px_rgba(56,34,57,0.18)] sm:p-10 lg:mx-0 lg:max-w-none ${
               landscapeArtwork ? "aspect-[5/4]" : "aspect-[4/5]"
             }`}
           >
@@ -93,7 +93,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               height={product.image.height}
               sizes="(min-width: 1024px) 540px, 90vw"
               priority
-              className="h-full w-full object-contain drop-shadow-[0_18px_22px_rgba(56,34,57,0.18)]"
+              className="h-full w-full object-contain drop-shadow-[0_20px_26px_rgba(56,34,57,0.20)]"
             />
           </div>
 

@@ -12,7 +12,7 @@ export function BundleDialogButton({ product }: { product: Product }) {
       type="button"
       aria-haspopup="dialog"
       onClick={() => dialog?.open(product)}
-      className={buttonClasses("light")}
+      className={buttonClasses("light", "w-full sm:w-auto")}
     >
       Explore the Bundle
       <span aria-hidden="true" className="button-arrow text-[0.95em]">

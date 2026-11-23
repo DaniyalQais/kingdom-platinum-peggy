@@ -5,7 +5,7 @@ import { footerLinks } from "@/content/navigation";
 import { site } from "@/content/site";
 
 const navLinkClass =
-  "inline-flex min-h-11 items-center text-[15px] text-plum transition-colors hover:text-plum-soft sm:min-h-8";
+  "inline-flex min-h-11 items-center text-[15px] text-plum transition-colors hover:text-plum-soft sm:min-h-8 focus-visible:outline-2 focus-visible:outline-plum focus-visible:outline-offset-2";
 
 const columnLabelClass =
   "text-[11px] font-medium uppercase tracking-[0.14em] text-plum-soft";
@@ -13,20 +13,34 @@ const columnLabelClass =
 export function SiteFooter() {
   return (
     <footer data-site-footer className="border-t border-line bg-ivory">
-      <Container className="py-10 sm:py-12">
-        <div className="grid gap-7 sm:grid-cols-[1.5fr_1fr_1fr] sm:gap-10">
-          <div className="flex items-center gap-4 sm:block sm:max-w-sm">
-            <Image
-              src="/images/brand/kingdom-platinum-logo.png"
-              alt="Kingdom Platinum Solutions, LLC"
-              width={466}
-              height={453}
-              sizes="(min-width: 640px) 56px, 48px"
-              className="h-12 w-auto sm:h-14"
-            />
-            <div>
+      <Container className="py-10 sm:py-14">
+        <div className="grid gap-8 sm:grid-cols-[1.5fr_1fr_1fr] sm:gap-10">
+          <div className="flex flex-col items-start gap-3 sm:max-w-sm">
+            <Link
+              href="/#home"
+              className="flex items-center gap-3 rounded-md focus-visible:outline-2 focus-visible:outline-plum focus-visible:outline-offset-2"
+              aria-label="Kingdom Platinum Solutions, LLC — Home"
+            >
+              <Image
+                src="/images/brand/kingdom-platinum-logo.png"
+                alt=""
+                width={466}
+                height={453}
+                sizes="(min-width: 640px) 56px, 48px"
+                className="h-12 w-auto sm:h-14"
+              />
+              <div className="flex flex-col leading-tight">
+                <span className="text-[15px] font-semibold tracking-tight text-plum sm:text-[16px]">
+                  Kingdom Platinum
+                </span>
+                <span className="text-[11px] font-medium tracking-normal text-plum/70 sm:text-[12px]">
+                  Solutions, LLC
+                </span>
+              </div>
+            </Link>
+            <div className="mt-1">
               <p className={columnLabelClass}>Grace Through Grief</p>
-              <p className="mt-1 text-[14px] leading-5 text-plum-soft sm:mt-2 sm:text-[15px] sm:leading-6">
+              <p className="mt-1.5 text-[14px] leading-relaxed text-plum-soft sm:text-[15px]">
                 Devotionals, journals, planners, and workbooks from{" "}
                 {site.founder}.
               </p>
@@ -35,7 +49,7 @@ export function SiteFooter() {
 
           <nav aria-label="Footer">
             <p className={columnLabelClass}>Explore</p>
-            <ul className="mt-1 flex flex-wrap gap-x-5 text-[15px] text-plum sm:mt-4 sm:flex-col sm:gap-x-0">
+            <ul className="mt-2 flex flex-wrap gap-x-6 text-[15px] text-plum sm:mt-4 sm:flex-col sm:gap-x-0">
               {footerLinks.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className={navLinkClass}>
@@ -48,7 +62,7 @@ export function SiteFooter() {
 
           <div>
             <p className={columnLabelClass}>Connect</p>
-            <ul className="mt-1 flex flex-wrap gap-x-5 text-[15px] text-plum sm:mt-4 sm:flex-col sm:gap-x-0">
+            <ul className="mt-2 flex flex-wrap gap-x-6 text-[15px] text-plum sm:mt-4 sm:flex-col sm:gap-x-0">
               <li>
                 <a
                   href={`mailto:${site.contact.email}`}
@@ -74,10 +88,13 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-8 border-t border-line pt-4 sm:mt-10 sm:pt-5">
-          <p className="text-[13px] text-plum-soft">
-            &copy; 2026 {site.name}. All rights reserved.
-          </p>
+        <div className="mt-8 border-t border-line/70 pt-5 sm:mt-12">
+          <div className="flex flex-col justify-between gap-2 text-[13px] text-plum-soft sm:flex-row sm:items-center">
+            <p>&copy; 2026 {site.name}. All rights reserved.</p>
+            <p className="text-[12px] text-plum-soft/80">
+              Grace Through Grief &mdash; Prospective Client Design Preview
+            </p>
+          </div>
         </div>
       </Container>
     </footer>
